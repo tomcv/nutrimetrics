@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nutrimetrics"
+description = "Analyzes nutrients found in foods and user-defined meal plans."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = [
+    "nutrition", "nutrient", "food", "meal", "diet", "calorie",
+    "counter", "calculator", "tracker", "analysis"
+]
+authors = [
+  { name = "Thomas Civeit", email = "thomas@civeit.com" },
+]
+classifiers = [
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+    "jsmin",
+    "requests",
+    "XlsxWriter",
+]
+dynamic = ["version"]
+
+[project.urls]
+Source = "https://github.com/tomcv/nutrimetrics"
+Issues = "https://github.com/tomcv/nutrimetrics/issues"
+
+[project.scripts]
+nutrimetrics-config = "nutrimetrics.cli:display_config"
+nutrimetrics-import = "nutrimetrics.cli:import_food_data_central"
+nutrimetrics-analyze = "nutrimetrics.cli:analyze_meal_plan"
+
+[tool.hatch.version]
+path = "nutrimetrics/__about__.py"

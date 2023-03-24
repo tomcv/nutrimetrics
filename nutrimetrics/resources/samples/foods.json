@@ -1,0 +1,78 @@
+// Food to import from FoodData Central
+// 'fdc_id' is found ny searching the FoodData Central database
+// 'name' specified below will be used in meal plans
+{
+  "foods": [
+    // Nuts and Seeds
+    {"fdc_id": 170567,  "name": "Almond"},
+    {"fdc_id": 170178,  "name": "Macadamia Nut"},
+    {"fdc_id": 170187,  "name": "Walnut"},
+    {"fdc_id": 170182,  "name": "Pecan Nut"},
+    {"fdc_id": 169414,  "name": "Flaxseed"},
+    {"fdc_id": 168588,  "name": "Almond Butter"},
+    {"fdc_id": 169593,  "name": "Cocoa Powder"},
+    // Vegetables
+    {"fdc_id": 2258591, "name": "Bell Pepper Orange"},
+    {"fdc_id": 2258588, "name": "Bell Pepper Green"},
+    {"fdc_id": 2258590, "name": "Bell Pepper Red"},
+    {"fdc_id": 2258589, "name": "Bell Pepper Yellow"},
+    {"fdc_id": 170005,  "name": "Scallion"},
+    {"fdc_id": 171705,  "name": "Avocado"},
+    {"fdc_id": 169279,  "name": "Sauerkraut"},
+    {"fdc_id": 169230,  "name": "Garlic"},
+    {"fdc_id": 172231,  "name": "Turmeric"},
+    {"fdc_id": 168482,  "name": "Sweet Potato"},
+    {"fdc_id": 321360,  "name": "Grape Tomato"},
+    {"fdc_id": 168389,  "name": "Asparagus"},
+    {"fdc_id": 170379,  "name": "Broccoli"},
+    {"fdc_id": 169986,  "name": "Cauliflower"},
+    {"fdc_id": 170383,  "name": "Brussels Sprout"},
+    {"fdc_id": 170496,  "name": "Wakame Seaweed"},
+    {"fdc_id": 169096,  "name": "Green Olive"},
+    {"fdc_id": 168462,  "name": "Spinach"},
+    {"fdc_id": 170393,  "name": "Carrot"},
+    {"fdc_id": 169145,  "name": "Beetroot"},
+    {"fdc_id": 169247,  "name": "Lettuce Romaine"},
+    {"fdc_id": 169291,  "name": "Zucchini"},
+    // Fruits
+    {"fdc_id": 171688,  "name": "Apple"},
+    {"fdc_id": 171697,  "name": "Apricot"},
+    {"fdc_id": 173944,  "name": "Banana"},
+    {"fdc_id": 171711,  "name": "Blueberry"},
+    {"fdc_id": 168195,  "name": "Clementine"},
+    {"fdc_id": 170174,  "name": "Coconut Water"},
+    {"fdc_id": 170169,  "name": "Coconut Meat"},
+    {"fdc_id": 167746,  "name": "Lemon"},
+    {"fdc_id": 167762,  "name": "Strawberry"},
+    // Dairy
+    {"fdc_id": 173430,  "name": "Butter"},
+    {"fdc_id": 170859,  "name": "Heavy Cream"},
+    {"fdc_id": 173414,  "name": "Cheddar Cheese"},
+    {"fdc_id": 172183,  "name": "Egg White"},
+    {"fdc_id": 172184,  "name": "Egg Yolk"},
+    {"fdc_id": 171265,  "name": "Whole Milk"},
+    {"fdc_id": 171284,  "name": "Yogurt Whole Milk"},
+    {"fdc_id": 2259794, "name": "Greek Yogurt Whole Milk"},
+    // Fish
+    {"fdc_id": 173686,  "name": "Salmon Atlantic"},
+    {"fdc_id": 173691,  "name": "Salmon Sockeye"},
+    {"fdc_id": 173706,  "name": "Tuna Bluefin"},
+    {"fdc_id": 175156,  "name": "Tuna Skipjack"},
+    {"fdc_id": 175159,  "name": "Tuna Yellowfin"},
+    {"fdc_id": 175139,  "name": "Sardine"},
+    {"fdc_id": 171978,  "name": "Oyster Eastern"},
+    {"fdc_id": 174219,  "name": "Oyster Pacific"},
+    // Meat
+    {"fdc_id": 174030,  "name": "Beef Ground 90-10"},
+    {"fdc_id": 174036,  "name": "Beef Ground 80-20"},
+    {"fdc_id": 171077,  "name": "Chicken Breast"},
+    // Grains
+    {"fdc_id": 2346397, "name": "Oat Steel Cut"},
+    {"fdc_id": 2346396, "name": "Oat Rolled"},
+    // Others
+    {"fdc_id": 171413,  "name": "Olive Oil"},
+    {"fdc_id": 173469,  "name": "Apple Cider Vinegar"},
+    {"fdc_id": 173468,  "name": "Salt"},
+    {"fdc_id": 169640,  "name": "Honey"}
+  ]
+}

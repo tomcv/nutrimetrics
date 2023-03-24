@@ -1,0 +1,39 @@
+{
+  "name": "Keto Diet",
+  "unit": "g",
+  "meals": [
+    {
+      "name": "Breakfast [8:00]",
+      "foods": [
+        {"food": "Egg White", "amount": 132}, // 4 eggs
+        {"food": "Egg Yolk", "amount": 68},
+        {"food": "Cheddar Cheese", "amount": 60},
+        {"food": "Flaxseed", "amount": 10},
+        {"food": "Olive Oil", "amount": 13}
+      ]
+    },
+    {
+      "name": "Lunch [13:00]",
+      "foods": [
+        {"food": "Chicken Breast", "amount": 150},
+        {"food": "Avocado", "amount": 135}, // 1 avocado
+        {"food": "Bell Pepper Orange", "amount": 80},
+        {"food": "Scallion", "amount": 20},
+        {"food": "Garlic", "amount": 2},
+        {"food": "Olive Oil", "amount": 13}, // 1 TBSP
+        {"food": "Apple Cider Vinegar", "amount": 13},
+        {"food": "Macadamia Nut", "amount": 30}
+      ]
+    },
+    {
+      "name": "Dinner [19:00]",
+      "foods": [
+        {"food": "Beef Ground 80-20", "amount": 150},
+        {"food": "Sauerkraut", "amount": 100},
+        {"food": "Turmeric", "amount": 4},
+        {"food": "Cauliflower", "amount": 110},
+        {"food": "Olive Oil", "amount": 26}  // 2 TBSP
+      ]
+    }
+  ]
+}
