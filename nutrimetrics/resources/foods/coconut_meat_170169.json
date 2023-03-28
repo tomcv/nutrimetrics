@@ -1,5 +1,6 @@
 {
   "name": "Coconut Meat",
+  "description": "Nuts, coconut meat, raw",
   "amount": 100,
   "nutrients": {
     "energy": 354.0,

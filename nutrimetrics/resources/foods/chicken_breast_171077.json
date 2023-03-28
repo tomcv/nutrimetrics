@@ -1,5 +1,6 @@
 {
   "name": "Chicken Breast",
+  "description": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
   "amount": 100,
   "nutrients": {
     "energy": 120.0,

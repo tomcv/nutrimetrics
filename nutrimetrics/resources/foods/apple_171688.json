@@ -1,5 +1,6 @@
 {
   "name": "Apple",
+  "description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
   "amount": 100,
   "nutrients": {
     "energy": 52.0,

@@ -1,5 +1,6 @@
 {
   "name": "Grape Tomato",
+  "description": "Tomatoes, grape, raw",
   "amount": 100,
   "nutrients": {
     "energy": 27.0,

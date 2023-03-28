@@ -1,5 +1,6 @@
 {
   "name": "Sardine",
+  "description": "Fish, sardine, Atlantic, canned in oil, drained solids with bone",
   "amount": 100,
   "nutrients": {
     "energy": 208.0,

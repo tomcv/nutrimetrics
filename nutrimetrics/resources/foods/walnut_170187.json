@@ -1,5 +1,6 @@
 {
   "name": "Walnut",
+  "description": "Nuts, walnuts, english",
   "amount": 100,
   "nutrients": {
     "energy": 654.0,

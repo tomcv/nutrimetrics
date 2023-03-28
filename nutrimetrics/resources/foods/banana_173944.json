@@ -1,5 +1,6 @@
 {
   "name": "Banana",
+  "description": "Bananas, raw",
   "amount": 100,
   "nutrients": {
     "energy": 89.0,

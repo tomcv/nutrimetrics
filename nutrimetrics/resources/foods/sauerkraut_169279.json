@@ -1,5 +1,6 @@
 {
   "name": "Sauerkraut",
+  "description": "Sauerkraut, canned, solids and liquids",
   "amount": 100,
   "nutrients": {
     "energy": 19.0,

@@ -1,5 +1,6 @@
 {
   "name": "Apple Cider Vinegar",
+  "description": "Vinegar, cider",
   "amount": 100,
   "nutrients": {
     "energy": 21.0,

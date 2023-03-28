@@ -1,5 +1,6 @@
 {
   "name": "Whole Milk",
+  "description": "Milk, whole, 3.25% milkfat, with added vitamin D",
   "amount": 100,
   "nutrients": {
     "energy": 61.0,

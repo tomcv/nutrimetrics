@@ -1,5 +1,6 @@
 {
   "name": "Macadamia Nut",
+  "description": "Nuts, macadamia nuts, raw",
   "amount": 100,
   "nutrients": {
     "energy": 718.0,

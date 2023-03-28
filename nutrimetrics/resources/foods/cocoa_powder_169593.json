@@ -1,5 +1,6 @@
 {
   "name": "Cocoa Powder",
+  "description": "Cocoa, dry powder, unsweetened",
   "amount": 100,
   "nutrients": {
     "energy": 228.0,

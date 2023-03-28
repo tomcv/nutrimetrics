@@ -1,5 +1,6 @@
 {
   "name": "Almond Butter",
+  "description": "Nuts, almond butter, plain, without salt added",
   "amount": 100,
   "nutrients": {
     "energy": 614.0,

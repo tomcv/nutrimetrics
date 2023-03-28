@@ -1,5 +1,6 @@
 {
   "name": "Beef Ground 80-20",
+  "description": "Beef, ground, 80% lean meat / 20% fat, raw",
   "amount": 100,
   "nutrients": {
     "energy": 254.0,

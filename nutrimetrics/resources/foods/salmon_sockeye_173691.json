@@ -1,5 +1,6 @@
 {
   "name": "Salmon Sockeye",
+  "description": "Fish, salmon, sockeye, raw",
   "amount": 100,
   "nutrients": {
     "energy": 131.0,

@@ -1,5 +1,6 @@
 {
   "name": "Pecan Nut",
+  "description": "Nuts, pecans",
   "amount": 100,
   "nutrients": {
     "energy": 691.0,

@@ -1,5 +1,6 @@
 {
   "name": "Cauliflower",
+  "description": "Cauliflower, raw",
   "amount": 100,
   "nutrients": {
     "energy": 25.0,

@@ -1,5 +1,6 @@
 {
   "name": "Tuna Yellowfin",
+  "description": "Fish, tuna, fresh, yellowfin, raw",
   "amount": 100,
   "nutrients": {
     "energy": 109.0,

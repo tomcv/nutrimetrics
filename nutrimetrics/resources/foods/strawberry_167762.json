@@ -1,5 +1,6 @@
 {
   "name": "Strawberry",
+  "description": "Strawberries, raw",
   "amount": 100,
   "nutrients": {
     "energy": 32.0,

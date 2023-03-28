@@ -1,5 +1,6 @@
 {
   "name": "Wakame Seaweed",
+  "description": "Seaweed, wakame, raw",
   "amount": 100,
   "nutrients": {
     "energy": 45.0,

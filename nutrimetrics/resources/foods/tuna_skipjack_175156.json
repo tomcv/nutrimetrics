@@ -1,5 +1,6 @@
 {
   "name": "Tuna Skipjack",
+  "description": "Fish, tuna, fresh, skipjack, raw",
   "amount": 100,
   "nutrients": {
     "energy": 103.0,

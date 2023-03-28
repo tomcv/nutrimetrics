@@ -1,5 +1,6 @@
 {
   "name": "Lemon",
+  "description": "Lemons, raw, without peel",
   "amount": 100,
   "nutrients": {
     "energy": 29.0,

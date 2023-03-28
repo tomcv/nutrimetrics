@@ -1,5 +1,6 @@
 {
   "name": "Cheddar Cheese",
+  "description": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
   "amount": 100,
   "nutrients": {
     "energy": 403.0,

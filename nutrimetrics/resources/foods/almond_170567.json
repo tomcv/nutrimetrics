@@ -1,5 +1,6 @@
 {
   "name": "Almond",
+  "description": "Nuts, almonds",
   "amount": 100,
   "nutrients": {
     "energy": 579.0,

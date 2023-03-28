@@ -1,5 +1,6 @@
 {
   "name": "Clementine",
+  "description": "Clementines, raw",
   "amount": 100,
   "nutrients": {
     "energy": 47.0,

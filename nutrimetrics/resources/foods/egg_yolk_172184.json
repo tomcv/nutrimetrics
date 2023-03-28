@@ -1,5 +1,6 @@
 {
   "name": "Egg Yolk",
+  "description": "Egg, yolk, raw, fresh",
   "amount": 100,
   "nutrients": {
     "energy": 322.0,

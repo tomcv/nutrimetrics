@@ -1,5 +1,6 @@
 {
   "name": "Salt",
+  "description": "Salt, table",
   "amount": 100,
   "nutrients": {
     "energy": 0.0,

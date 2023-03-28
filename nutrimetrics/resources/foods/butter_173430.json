@@ -1,5 +1,6 @@
 {
   "name": "Butter",
+  "description": "Butter, without salt",
   "amount": 100,
   "nutrients": {
     "energy": 717.0,

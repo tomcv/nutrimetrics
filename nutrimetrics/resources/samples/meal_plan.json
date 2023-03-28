@@ -1,6 +1,13 @@
 {
   "name": "Keto Diet",
   "unit": "g",
+    "target": {
+      "body_mass": 75000.0,
+      "body_fat_percent": 15.0,
+      "activity_factor": 1.2,  // in [1.2, 1.6] range based on activity
+      "protein_factor": 1.8,  // minimum protein intake in [1.5, 2.3] range
+      "fat_factor": 0.8  // minimum fat intake 0.7 or larger
+  },
   "meals": [
     {
       "name": "Breakfast [8:00]",

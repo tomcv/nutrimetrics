@@ -1,5 +1,6 @@
 {
   "name": "Coconut Water",
+  "description": "Nuts, coconut water (liquid from coconuts)",
   "amount": 100,
   "nutrients": {
     "energy": 19.0,

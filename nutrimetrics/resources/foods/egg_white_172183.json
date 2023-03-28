@@ -1,5 +1,6 @@
 {
   "name": "Egg White",
+  "description": "Egg, white, raw, fresh",
   "amount": 100,
   "nutrients": {
     "energy": 52.0,

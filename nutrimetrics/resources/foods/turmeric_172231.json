@@ -1,5 +1,6 @@
 {
   "name": "Turmeric",
+  "description": "Spices, turmeric, ground",
   "amount": 100,
   "nutrients": {
     "energy": 312.0,

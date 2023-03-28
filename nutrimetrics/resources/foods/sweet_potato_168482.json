@@ -1,5 +1,6 @@
 {
   "name": "Sweet Potato",
+  "description": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
   "amount": 100,
   "nutrients": {
     "energy": 86.0,

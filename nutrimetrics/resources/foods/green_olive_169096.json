@@ -1,5 +1,6 @@
 {
   "name": "Green Olive",
+  "description": "Olives, pickled, canned or bottled, green",
   "amount": 100,
   "nutrients": {
     "energy": 145.0,

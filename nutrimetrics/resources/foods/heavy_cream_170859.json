@@ -1,5 +1,6 @@
 {
   "name": "Heavy Cream",
+  "description": "Cream, fluid, heavy whipping",
   "amount": 100,
   "nutrients": {
     "energy": 340.0,

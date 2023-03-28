@@ -1,5 +1,6 @@
 {
   "name": "Honey",
+  "description": "Honey",
   "amount": 100,
   "nutrients": {
     "energy": 304.0,

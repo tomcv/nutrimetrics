@@ -1,5 +1,6 @@
 {
   "name": "Yogurt Whole Milk",
+  "description": "Yogurt, plain, whole milk",
   "amount": 100,
   "nutrients": {
     "energy": 61.0,

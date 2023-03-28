@@ -1,5 +1,6 @@
 {
   "name": "Brussels Sprout",
+  "description": "Brussels sprouts, raw",
   "amount": 100,
   "nutrients": {
     "energy": 43.0,

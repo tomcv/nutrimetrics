@@ -1,5 +1,6 @@
 {
   "name": "Olive Oil",
+  "description": "Oil, olive, salad or cooking",
   "amount": 100,
   "nutrients": {
     "energy": 884.0,
