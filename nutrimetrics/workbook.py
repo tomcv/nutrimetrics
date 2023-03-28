@@ -49,7 +49,7 @@ class WorkbookGenerator:
     def create_foods_worksheet(self, foods_dict):
         worksheet = self.workbook.add_worksheet('Foods')
         self.write_headers(worksheet)
-        row_i, column_i = self.write_values(worksheet, row_i=0, foods=foods_dict.values())
+        row_i, column_i = self.write_values(worksheet, row_i=0, foods=foods_dict.values(), comment=True)
         self.write_columns_separators(worksheet, row_i)
         self.set_columns_width(worksheet, column_i)
         worksheet.freeze_panes('B2')
@@ -129,7 +129,12 @@ class WorkbookGenerator:
                 rotation=45)
             worksheet.write(row_i, column_i, self.get_header_label(nutrient), fmt)
 
-    def write_values(self, worksheet, row_i, foods, force_bold=False, force_bg_color=None):
+    def write_values(self, worksheet, row_i, foods, comment=False, force_bold=False, force_bg_color=None):
+        comments_options = {
+            'font_name': self.settings['font_name'],
+            'font_size': self.settings['font_size'],
+            'width': 250,
+        }
         for food in foods:
             row_i += 1
             column_i = 0
@@ -139,6 +144,8 @@ class WorkbookGenerator:
                 bold=force_bold,
                 align='left')
             worksheet.write(row_i, column_i, food.name, fmt)
+            if comment:
+                worksheet.write_comment(row_i, column_i, food.description, comments_options)
             column_i += 1
             fmt = self.get_format(
                 font_color=self.settings['colors']['amount'][0],

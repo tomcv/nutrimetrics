@@ -16,8 +16,9 @@ from nutrimetrics.units import convert_amount
 
 class Food:
     """Defines food that consists of nutrients."""
-    def __init__(self, name='', amount=0):
+    def __init__(self, name='', description='', amount=0):
         self.name = name
+        self.description = description
         self.amount = amount
         self.nutrients = dict()  # key: nutrient's data_name, value: amount
         for nutrient in nutrients_list:
@@ -31,6 +32,7 @@ class Food:
         data = json.loads(jsmin(json_file.read()))
         food = Food()
         food.name = data['name']
+        food.description = data['description']
         food.amount = data['amount']
         for ntr, amt in data['nutrients'].items():
             food.nutrients[ntr] = amt
@@ -50,7 +52,7 @@ class Food:
 class FoodTotal(Food):
     """A food total is used to store combined foods."""
     def __init__(self, name):
-        super().__init__(name=name, amount=0)
+        super().__init__(name=name, description='', amount=0)
 
 
 def load_foods():

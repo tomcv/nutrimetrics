@@ -48,7 +48,8 @@ class FoodDataCentral:
 
     def write_food_file(self, fdc_id, food_name, fdc_data):
         food_file = Path(config.foods_dir, food_name.lower().replace(' ', '_') + f'_{fdc_id}.json')
-        food = Food(food_name, 100)  # FoodData Central nutrients are always provided for 100 grams
+        # FoodData Central nutrients are always provided for 100 grams
+        food = Food(food_name, fdc_data['description'], amount=100)
         for food_nutrient in fdc_data["foodNutrients"]:
             if "amount" in food_nutrient:
                 ntr_id = food_nutrient["nutrient"]["id"]
