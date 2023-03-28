@@ -125,6 +125,11 @@
     "energy_bg_color": "#F6FBC7",
     "dri_positive_bg_color": "#EBF1DE",
     "dri_negative_bg_color": "#F2DCDB",
-    "columns_separators": [2, 20, 31, 46, 55, 65]
+    "columns_separators": [2, 20, 31, 46, 55, 65],
+    "target": {
+      "font_color": "#000000",
+      "column_pixels_label": 500,
+      "column_pixels_value": 165
+    }
   }
 }

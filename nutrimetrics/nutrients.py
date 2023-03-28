@@ -111,18 +111,3 @@ vitamins = ['vitamin-a', 'retinol', 'thiamin', 'riboflavin', 'niacin', 'pantothe
             'menaquinone']
 
 alkaloids = ['caffeine', 'theobromine']
-
-
-class EnergyDistribution:
-    """Defines an energy distribution in fats, proteins and carbs."""
-    def __init__(self, protein_amount, carb_amount, fat_amount):
-        self.protein_factor = 4
-        self.carbohydrate_factor = 4
-        self.fat_factor = 8
-        self.energy_protein = protein_amount * self.protein_factor
-        self.energy_carb = carb_amount * self.carbohydrate_factor
-        self.energy_fat = fat_amount * self.fat_factor
-        self.energy_total = self.energy_protein + self.energy_carb + self.energy_fat
-        self.protein_ratio = self.energy_protein / self.energy_total
-        self.carbohydrate_ratio = self.energy_carb / self.energy_total
-        self.fat_ratio = self.energy_fat / self.energy_total

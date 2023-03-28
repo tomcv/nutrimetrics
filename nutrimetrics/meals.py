@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 """Defines food, meal, and meal plan."""
 
-from nutrimetrics.nutrients import nutrients_list, EnergyDistribution
+from nutrimetrics.nutrients import nutrients_list
 from jsmin import jsmin
 import json
 import os
@@ -12,6 +12,11 @@ import nutrimetrics.config as config
 import copy
 from collections import OrderedDict
 from nutrimetrics.units import convert_amount
+
+
+energy_protein_factor = 4
+energy_carbohydrate_factor = 4
+energy_fat_factor = 8
 
 
 class Food:
@@ -104,8 +109,47 @@ class MealPlan:
         self.distribution = EnergyDistribution(self.total.nutrients["protein"],
                                                self.total.nutrients["carbohydrate"],
                                                self.total.nutrients["fat"])
+        # calculate target
+        self.target = Target(
+            convert_amount(data["target"]["body_mass"], self.unit),
+            data["target"]["body_fat_percent"] / 100,
+            data["target"]["activity_factor"],
+            data["target"]["protein_factor"],
+            data["target"]["fat_factor"],
+        )
+        dri_dict['energy'] = self.target.basal_metabolic_rate
+        dri_dict['protein'] = self.target.minimum_protein
+        dri_dict['fat'] = self.target.minimum_fat
         # calculate DRI ratio
         self.dri_ratio = dict()  # key: nutrient's data_name, value: DRI ratio
         for ntr_name in [nutrient.data_name for nutrient in nutrients_list]:
             if ntr_name in dri_dict:
                 self.dri_ratio[ntr_name] = self.total.nutrients[ntr_name] / dri_dict[ntr_name]
+
+
+class Target:
+    def __init__(self, body_mass, body_fat_ratio, activity_factor, protein_factor, fat_factor):
+        self.body_mass = body_mass
+        self.body_fat_ratio = body_fat_ratio
+        self.activity_factor = activity_factor
+        self.protein_factor = protein_factor
+        self.fat_factor = fat_factor
+        # calculate derived variables
+        self.lean_body_mass = (1 - self.body_fat_ratio) * self.body_mass
+        # Katch–McArdle formula: Resting Daily Energy Expenditure (RDEE)
+        self.resting_energy = 370 + (21.6 * (self.lean_body_mass / 1000))
+        self.basal_metabolic_rate = self.resting_energy * self.activity_factor
+        self.minimum_protein = self.lean_body_mass * self.protein_factor / 1000  # kg to g
+        self.minimum_fat = self.lean_body_mass * self.fat_factor / 1000  # kg to g
+
+
+class EnergyDistribution:
+    """Defines an energy distribution in fats, proteins and carbs."""
+    def __init__(self, protein_amount, carb_amount, fat_amount):
+        self.energy_protein = protein_amount * energy_protein_factor
+        self.energy_carb = carb_amount * energy_carbohydrate_factor
+        self.energy_fat = fat_amount * energy_fat_factor
+        self.energy_total = self.energy_protein + self.energy_carb + self.energy_fat
+        self.protein_ratio = self.energy_protein / self.energy_total
+        self.carbohydrate_ratio = self.energy_carb / self.energy_total
+        self.fat_ratio = self.energy_fat / self.energy_total

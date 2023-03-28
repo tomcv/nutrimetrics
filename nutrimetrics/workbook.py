@@ -17,6 +17,7 @@ class WorkbookGenerator:
     def generate(self, out_file, meal_plan, foods_dict):
         self.workbook = xlsxwriter.Workbook(out_file)
         self.create_meals_worksheet(meal_plan)
+        self.create_target_worksheet(meal_plan)
         self.create_foods_worksheet(foods_dict)
         self.workbook.close()
         print(f'Workbook created in {out_file.absolute()}')
@@ -41,10 +42,62 @@ class WorkbookGenerator:
         row_i, column_i = self.write_values(worksheet, row_i, foods=[meal_plan.total],
                                             force_bold=True, force_bg_color=self.settings['grand_total_bg_color'])
         row_i, column_i = self.write_energy(worksheet, row_i, meal_plan)
-        row_i, column_i = self.write_dri(worksheet, row_i, meal_plan)
+        row_i, column_i = self.write_target_and_dri(worksheet, row_i, meal_plan)
         self.write_columns_separators(worksheet, row_i)
         self.set_columns_width(worksheet, column_i)
         worksheet.freeze_panes('B2')
+
+    def create_target_worksheet(self, meal_plan):
+        worksheet = self.workbook.add_worksheet('Target')
+        fmt_label = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=None,
+            bold=False,
+            align='left',
+            border=1)
+        fmt_value = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=None,
+            bold=False,
+            align='right',
+            border=1)
+        fmt_energy_label = self.get_format(
+            font_color=self.settings['colors']['energy'][0],
+            bg_color=self.settings['colors']['energy'][1],
+            bold=False,
+            align='left',
+            border=1)
+        fmt_energy_value = self.get_format(
+            font_color=self.settings['colors']['energy'][0],
+            bg_color=self.settings['colors']['energy'][1],
+            bold=False,
+            align='right',
+            border=1)
+        # parameters
+        worksheet.write(0, 0, 'Body Mass (g)', fmt_label)
+        worksheet.write(0, 1, meal_plan.target.body_mass, fmt_value)
+        worksheet.write(1, 0, 'Body Fat (%)', fmt_label)
+        worksheet.write(1, 1, meal_plan.target.body_fat_ratio * 100, fmt_value)
+        worksheet.write(2, 0, 'Activity Factor', fmt_label)
+        worksheet.write(2, 1, meal_plan.target.activity_factor, fmt_value)
+        worksheet.write(3, 0, 'Protein Factor', fmt_label)
+        worksheet.write(3, 1, meal_plan.target.protein_factor, fmt_value)
+        worksheet.write(4, 0, 'Fat Factor', fmt_label)
+        worksheet.write(4, 1, meal_plan.target.fat_factor, fmt_value)
+        # calculated values
+        worksheet.write(6, 0, 'Lean Body Mass (g)', fmt_label)
+        worksheet.write(6, 1, meal_plan.target.lean_body_mass, fmt_value)
+        worksheet.write(7, 0, 'Resting Daily Energy Expenditure (kcal)', fmt_label)
+        worksheet.write(7, 1, meal_plan.target.resting_energy, fmt_value)
+        worksheet.write(8, 0, 'Basal Metabolic Rate (kcal)', fmt_energy_label)
+        worksheet.write(8, 1, meal_plan.target.basal_metabolic_rate, fmt_energy_value)
+        worksheet.write(9, 0, 'Minimum Protein (g)', fmt_label)
+        worksheet.write(9, 1, meal_plan.target.minimum_protein, fmt_value)
+        worksheet.write(10, 0, 'Minimum Fat (g)', fmt_label)
+        worksheet.write(10, 1, meal_plan.target.minimum_fat, fmt_value)
+        # set columns width
+        worksheet.set_column_pixels(0, 0, self.settings['target']['column_pixels_label'])
+        worksheet.set_column_pixels(1, 1, self.settings['target']['column_pixels_value'])
 
     def create_foods_worksheet(self, foods_dict):
         worksheet = self.workbook.add_worksheet('Foods')
@@ -195,7 +248,7 @@ class WorkbookGenerator:
                 worksheet.write(row_i, column_i, 100 * meal_plan.distribution.fat_ratio, fmt)
         return row_i, column_i
 
-    def write_dri(self, worksheet, row_i, meal_plan):
+    def write_target_and_dri(self, worksheet, row_i, meal_plan):
         # write DRI values
         row_i += 1
         column_i = 0
@@ -204,7 +257,7 @@ class WorkbookGenerator:
             bg_color=None,
             bold=True,
             align='left')
-        worksheet.write(row_i, column_i, 'Dietary Reference Intakes', fmt)
+        worksheet.write(row_i, column_i, 'Target & DRI', fmt)
         column_i = 1
         for nutrient in nutrients_list:
             if nutrient.data_name in self.settings['do_not_display']:
@@ -226,7 +279,7 @@ class WorkbookGenerator:
             bg_color=None,
             bold=True,
             align='left')
-        worksheet.write(row_i, column_i, 'DRI [%]', fmt)
+        worksheet.write(row_i, column_i, 'Target & DRI [%]', fmt)
         column_i = 1
         for nutrient in nutrients_list:
             if nutrient.data_name in self.settings['do_not_display']:
