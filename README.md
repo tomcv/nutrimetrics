@@ -10,7 +10,7 @@ with a specified amount. Analysis reports are generated in Excel workbooks.
 [![PyPI - Version](https://img.shields.io/pypi/v/nutrimetrics.svg)](https://pypi.org/project/nutrimetrics)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nutrimetrics.svg)](https://pypi.org/project/nutrimetrics)
 
-![Report Screenshot](report.png?raw=true)
+![Report Screenshot](https://github.com/tomcv/nutrimetrics/blob/main/report.png?raw=true)
 
 -----
 

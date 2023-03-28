@@ -8,6 +8,7 @@
     {"fdc_id": 170178,  "name": "Macadamia Nut"},
     {"fdc_id": 170187,  "name": "Walnut"},
     {"fdc_id": 170182,  "name": "Pecan Nut"},
+    {"fdc_id": 170184,  "name": "Pistachio"},
     {"fdc_id": 169414,  "name": "Flaxseed"},
     {"fdc_id": 168588,  "name": "Almond Butter"},
     {"fdc_id": 169593,  "name": "Cocoa Powder"},
@@ -66,6 +67,7 @@
     {"fdc_id": 174030,  "name": "Beef Ground 90-10"},
     {"fdc_id": 174036,  "name": "Beef Ground 80-20"},
     {"fdc_id": 171077,  "name": "Chicken Breast"},
+    {"fdc_id": 167914,  "name": "Pork Bacon"},
     // Grains
     {"fdc_id": 2346397, "name": "Oat Steel Cut"},
     {"fdc_id": 2346396, "name": "Oat Rolled"},
@@ -73,6 +75,7 @@
     {"fdc_id": 171413,  "name": "Olive Oil"},
     {"fdc_id": 173469,  "name": "Apple Cider Vinegar"},
     {"fdc_id": 173468,  "name": "Salt"},
-    {"fdc_id": 169640,  "name": "Honey"}
+    {"fdc_id": 169640,  "name": "Honey"},
+    {"fdc_id": 171890,  "name": "Brewed Coffee"}
   ]
 }

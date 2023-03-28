@@ -34,7 +34,7 @@ Source = "https://github.com/tomcv/nutrimetrics"
 Issues = "https://github.com/tomcv/nutrimetrics/issues"
 
 [project.scripts]
-nutrimetrics-config = "nutrimetrics.cli:display_config"
+nutrimetrics-init = "nutrimetrics.cli:initialize"
 nutrimetrics-import = "nutrimetrics.cli:import_food_data_central"
 nutrimetrics-analyze = "nutrimetrics.cli:analyze_meal_plan"
 

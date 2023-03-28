@@ -6,16 +6,22 @@
 import argparse
 from pathlib import Path
 import nutrimetrics.config as config
-import pprint
+from nutrimetrics.__about__ import __version__ as nutrimetrics_version
 from nutrimetrics.food_data_central import FoodDataCentral
 from nutrimetrics.meals import load_foods, MealPlan
 from nutrimetrics.workbook import WorkbookGenerator
+from jsmin import __version__ as jsmin_version
+from requests import __version__ as requests_version
+from xlsxwriter import __version__ as xlsxwriter_version
 
 
-def display_config():
-    """Command that displays user's configuration."""
-    pp = pprint.PrettyPrinter(indent=4, sort_dicts=False)
-    pp.pprint(config.read_config())
+def initialize():
+    """Command that initializes user's configuration."""
+    cfg = config.read_config()
+    info = f'NutriMetrics version {nutrimetrics_version} initialized '
+    info += f'(jsmin: {jsmin_version}, requests: {requests_version}, xlsxwriter: {xlsxwriter_version})\n'
+    info += f'{config.config_dir.absolute()}\n├── config.json\n├── foods\n└── samples'
+    print(info)
 
 
 def analyze_meal_plan():
