@@ -128,8 +128,8 @@
     "columns_separators": [2, 20, 31, 46, 55, 65],
     "target": {
       "font_color": "#000000",
-      "column_pixels_label": 500,
-      "column_pixels_value": 165
+      "column_pixels_label": 260,
+      "column_pixels_value": 90
     }
   }
 }
