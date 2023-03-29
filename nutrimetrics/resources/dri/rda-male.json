@@ -1,0 +1,34 @@
+// Institute of Medicine. 2006. Dietary Reference Intakes: The Essential Guide to Nutrient Requirements.
+// Washington, DC: The National Academies Press. https://doi.org/10.17226/11537.
+// https://nap.nationalacademies.org/catalog/11537/dietary-reference-intakes-the-essential-guide-to-nutrient-requirements
+// Male Recommended Dietary Allowance (RDA) or Adequate Intake (AI)
+// Unit: gram
+{
+  "dietary_reference_intakes": {
+    "vitamin-a": 900e-6,
+    "thiamin": 1.2e-3,
+    "riboflavin": 1.3e-3,
+    "niacin": 16e-3,
+    "pantothenic-acid": 5e-3, // AI
+    "vitamin-b6": 1.3e-3,
+    "biotin": 30e-6, // AI
+    "folate": 400e-6,
+    "vitamin-b12": 2.4e-6,
+    "choline": 550e-3, // AI
+    "vitamin-c": 90e-3,
+    "vitamin-d": 5e-6, // AI
+    "vitamin-e": 15e-3,
+    "phylloquinone": 120e-6, // AI
+    "calcium": 1.0, // AI
+    "copper": 900e-6,
+    "iron": 8.0e-3,
+    "magnesium": 420e-3,
+    "manganese": 2.3e-3, // AI
+    "molybdenum": 45e-6,
+    "phosphorus": 700e-3,
+    "potassium": 4.7, // AI
+    "sodium": 1.5, // AI
+    "selenium": 55e-6,
+    "zinc": 11e-3
+  }
+}

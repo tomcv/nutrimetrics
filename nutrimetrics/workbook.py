@@ -9,9 +9,8 @@ from nutrimetrics.nutrients import nutrients_list, proteins, carbohydrates, fats
 
 class WorkbookGenerator:
     """Workbook interface to generate Excel reports."""
-    def __init__(self, settings, dri_dict):
+    def __init__(self, settings):
         self.settings = settings
-        self.dri_dict = dri_dict
         self.workbook = None
 
     def generate(self, out_file, meal_plan, foods_dict):
@@ -61,6 +60,42 @@ class WorkbookGenerator:
             bold=False,
             align='right',
             border=1)
+        fmt_body_mass_label = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=self.settings['target']['body_mass_bg_color'],
+            bold=False,
+            align='left',
+            border=1)
+        fmt_body_mass_value = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=self.settings['target']['body_mass_bg_color'],
+            bold=False,
+            align='right',
+            border=1)
+        fmt_body_fat_label = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=self.settings['target']['body_fat_bg_color'],
+            bold=False,
+            align='left',
+            border=1)
+        fmt_body_fat_value = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=self.settings['target']['body_fat_bg_color'],
+            bold=False,
+            align='right',
+            border=1)
+        fmt_lean_body_mass_label = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=self.settings['target']['lean_body_mass_bg_color'],
+            bold=False,
+            align='left',
+            border=1)
+        fmt_lean_body_mass_value = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=self.settings['target']['lean_body_mass_bg_color'],
+            bold=False,
+            align='right',
+            border=1)
         fmt_energy_label = self.get_format(
             font_color=self.settings['colors']['energy'][0],
             bg_color=self.settings['colors']['energy'][1],
@@ -73,20 +108,26 @@ class WorkbookGenerator:
             bold=False,
             align='right',
             border=1)
+        fmt_annotate = self.get_format(
+            font_color=self.settings['target']['font_color'],
+            bg_color=None,
+            bold=False,
+            align='left',
+            italic=True)
         # parameters
-        worksheet.write(0, 0, 'Body Mass (g)', fmt_label)
-        worksheet.write(0, 1, meal_plan.target.body_mass, fmt_value)
-        worksheet.write(1, 0, 'Body Fat (%)', fmt_label)
-        worksheet.write(1, 1, meal_plan.target.body_fat_ratio * 100, fmt_value)
+        worksheet.write(0, 0, 'Body Mass (g)', fmt_body_mass_label)
+        worksheet.write(0, 1, meal_plan.target.body_mass, fmt_body_mass_value)
+        worksheet.write(1, 0, 'Body Fat (%)', fmt_body_fat_label)
+        worksheet.write(1, 1, meal_plan.target.body_fat_ratio * 100, fmt_body_fat_value)
         worksheet.write(2, 0, 'Activity Factor', fmt_label)
         worksheet.write(2, 1, meal_plan.target.activity_factor, fmt_value)
-        worksheet.write(3, 0, 'Protein Factor', fmt_label)
-        worksheet.write(3, 1, meal_plan.target.protein_factor, fmt_value)
-        worksheet.write(4, 0, 'Fat Factor', fmt_label)
-        worksheet.write(4, 1, meal_plan.target.fat_factor, fmt_value)
+        worksheet.write(3, 0, 'Minimum Protein Factor', fmt_label)
+        worksheet.write(3, 1, meal_plan.target.minimum_protein_factor, fmt_value)
+        worksheet.write(4, 0, 'Minimum Fat Factor', fmt_label)
+        worksheet.write(4, 1, meal_plan.target.minimum_fat_factor, fmt_value)
         # calculated values
-        worksheet.write(6, 0, 'Lean Body Mass (g)', fmt_label)
-        worksheet.write(6, 1, meal_plan.target.lean_body_mass, fmt_value)
+        worksheet.write(6, 0, 'Lean Body Mass (g)', fmt_lean_body_mass_label)
+        worksheet.write(6, 1, meal_plan.target.lean_body_mass, fmt_lean_body_mass_value)
         worksheet.write(7, 0, 'Resting Daily Energy Expenditure (kcal)', fmt_label)
         worksheet.write(7, 1, meal_plan.target.resting_energy, fmt_value)
         worksheet.write(8, 0, 'Basal Metabolic Rate (kcal)', fmt_energy_label)
@@ -95,9 +136,14 @@ class WorkbookGenerator:
         worksheet.write(9, 1, meal_plan.target.minimum_protein, fmt_value)
         worksheet.write(10, 0, 'Minimum Fat (g)', fmt_label)
         worksheet.write(10, 1, meal_plan.target.minimum_fat, fmt_value)
+        # add annotations
+        worksheet.write(0, 3, "Meal plan parameters", fmt_annotate)
+        worksheet.write(7, 3, "Katch–McArdle formula", fmt_annotate)
+        worksheet.write(8, 3, "BMR based on activity factor", fmt_annotate)
         # set columns width
         worksheet.set_column_pixels(0, 0, self.settings['target']['column_pixels_label'])
         worksheet.set_column_pixels(1, 1, self.settings['target']['column_pixels_value'])
+        worksheet.set_column_pixels(2, 2, self.settings['target']['column_pixels_separator'])
 
     def create_foods_worksheet(self, foods_dict):
         worksheet = self.workbook.add_worksheet('Foods')
@@ -107,7 +153,7 @@ class WorkbookGenerator:
         self.set_columns_width(worksheet, column_i)
         worksheet.freeze_panes('B2')
 
-    def get_format(self, font_color, bg_color, bold, align, border=None, rotation=None):
+    def get_format(self, font_color, bg_color, bold, align, border=None, rotation=None, italic=None):
         fmt = {
             'font_name': self.settings['font_name'],
             'font_size': self.settings['font_size'],
@@ -123,6 +169,8 @@ class WorkbookGenerator:
             fmt['border'] = border
         if rotation:
             fmt['rotation'] = rotation
+        if italic:
+            fmt['italic'] = italic
         return self.workbook.add_format(fmt)
 
     def get_colors(self, nutrient_data_name):
@@ -226,7 +274,7 @@ class WorkbookGenerator:
         fmt = self.get_format(
             font_color=self.settings['colors']['food'][0],
             bg_color=None,
-            bold=True,
+            bold=False,
             align='left')
         worksheet.write(row_i, column_i, 'Energy [%]', fmt)
         column_i = 1
@@ -255,29 +303,30 @@ class WorkbookGenerator:
         fmt = self.get_format(
             font_color=self.settings['colors']['food'][0],
             bg_color=None,
-            bold=True,
+            bold=False,
             align='left')
-        worksheet.write(row_i, column_i, 'Target & DRI', fmt)
+        worksheet.write(row_i, column_i, f'Target & DRI ({meal_plan.dri_name})', fmt)
         column_i = 1
         for nutrient in nutrients_list:
             if nutrient.data_name in self.settings['do_not_display']:
                 continue
             column_i += 1
-            if nutrient.data_name in self.dri_dict:
+            if nutrient.data_name in meal_plan.dri_dict:
                 font_color, bg_color = self.get_colors(nutrient.data_name)
                 fmt = self.get_format(
                     font_color=font_color,
                     bg_color=None,
                     bold=False,
                     align='right')
-                worksheet.write(row_i, column_i, self.convert(nutrient, self.dri_dict[nutrient.data_name]), fmt)
+                worksheet.write(row_i, column_i,
+                                self.convert(nutrient, meal_plan.dri_dict[nutrient.data_name]), fmt)
         # write DRI percentage
         row_i += 1
         column_i = 0
         fmt = self.get_format(
             font_color=self.settings['colors']['food'][0],
             bg_color=None,
-            bold=True,
+            bold=False,
             align='left')
         worksheet.write(row_i, column_i, 'Target & DRI [%]', fmt)
         column_i = 1
@@ -285,7 +334,7 @@ class WorkbookGenerator:
             if nutrient.data_name in self.settings['do_not_display']:
                 continue
             column_i += 1
-            if nutrient.data_name in self.dri_dict:
+            if nutrient.data_name in meal_plan.dri_dict:
                 font_color, bg_color = self.get_colors(nutrient.data_name)
                 percent = 100 * meal_plan.dri_ratio[nutrient.data_name]
                 bg_color = (self.settings['dri_negative_bg_color'] if percent < 100
@@ -301,10 +350,9 @@ class WorkbookGenerator:
     def write_columns_separators(self, worksheet, bottom_row):
         border_format = self.workbook.add_format({'left': 1})
         for column in self.settings['columns_separators']:
-            worksheet.conditional_format(1, column, bottom_row, column,
-                                         {'type': 'blanks', 'format': border_format})
-            worksheet.conditional_format(1, column, bottom_row, column,
-                                         {'type': 'no_blanks', 'format': border_format})
+            for cell_type in ['blanks', 'no_blanks']:
+                worksheet.conditional_format(1, column, bottom_row, column,
+                                             {'type': cell_type, 'format': border_format})
 
     def set_columns_width(self, worksheet, last_column):
         worksheet.set_column_pixels(0, 0, self.settings['column_pixels_food'])

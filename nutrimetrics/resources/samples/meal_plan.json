@@ -4,10 +4,11 @@
     "target": {
       "body_mass": 75000.0,
       "body_fat_percent": 15.0,
-      "activity_factor": 1.2,  // in [1.2, 1.6] range based on activity
-      "protein_factor": 1.8,  // minimum protein intake in [1.5, 2.3] range
-      "fat_factor": 0.8  // minimum fat intake 0.7 or larger
+      "activity_factor": 1.3,  // in [1.2, 1.6] range based on activity
+      "minimum_protein_factor": 2.0,  // minimum protein intake in [1.5, 2.3] range
+      "minimum_fat_factor": 0.8  // minimum fat intake 0.7 or larger
   },
+  "dietary_reference_intakes": "rda-male", // (ear-male, ear-female, rda-male, rda-female)
   "meals": [
     {
       "name": "Breakfast [8:00]",

@@ -74,33 +74,6 @@
       "theobromine": [1058]
     }
   },
-  "dietary_reference_intakes": {
-    "vitamin-a": 0.0009,
-    "thiamin": 0.0012,
-    "riboflavin": 0.0013,
-    "niacin": 0.016,
-    "pantothenic-acid": 0.005,
-    "vitamin-b6": 0.0017,
-    "biotin": 3e-05,
-    "folate": 0.0004,
-    "vitamin-b12": 2.4e-06,
-    "choline": 0.55,
-    "vitamin-c": 0.09,
-    "vitamin-d": 2e-05,
-    "vitamin-e": 0.015,
-    "phylloquinone": 0.00012,
-    "calcium": 1.3,
-    "copper": 0.0009,
-    "iron": 0.018,
-    "magnesium": 0.42,
-    "manganese": 0.0023,
-    "molybdenum": 4.5e-05,
-    "phosphorus": 1.25,
-    "potassium": 4.7,
-    "sodium": 1.5,
-    "selenium": 5.5e-05,
-    "zinc": 0.011
-  },
   "workbook_settings": {
     "font_name": "Helvetica",
     "font_size": 11,
@@ -128,8 +101,12 @@
     "columns_separators": [2, 20, 31, 46, 55, 65],
     "target": {
       "font_color": "#000000",
+      "body_mass_bg_color": "#D9D9D9",
+      "body_fat_bg_color": "#F2F2F2",
+      "lean_body_mass_bg_color": "#DCE6F1",
       "column_pixels_label": 260,
-      "column_pixels_value": 90
+      "column_pixels_value": 90,
+      "column_pixels_separator": 20
     }
   }
 }

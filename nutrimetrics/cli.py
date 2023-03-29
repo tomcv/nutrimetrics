@@ -20,7 +20,7 @@ def initialize():
     cfg = config.read_config()
     info = f'NutriMetrics version {nutrimetrics_version} initialized '
     info += f'(jsmin: {jsmin_version}, requests: {requests_version}, xlsxwriter: {xlsxwriter_version})\n'
-    info += f'{config.config_dir.absolute()}\n├── config.json\n├── foods\n└── samples'
+    info += config.get_config_file_tree()
     print(info)
 
 
@@ -42,8 +42,8 @@ def analyze_meal_plan():
         exit()
     cfg = config.read_config()
     foods = load_foods()
-    meal_plan = MealPlan(json_file, foods, cfg['dietary_reference_intakes'])
-    generator = WorkbookGenerator(cfg['workbook_settings'], cfg['dietary_reference_intakes'])
+    meal_plan = MealPlan(json_file, foods)
+    generator = WorkbookGenerator(cfg['workbook_settings'])
     generator.generate(Path(json_file.name.replace('.json', '.xlsx')), meal_plan, foods)
 
 

@@ -93,7 +93,7 @@ class Meal:
 
 class MealPlan:
     """Defines meal plan that consists of meals."""
-    def __init__(self, json_file, foods_dict, dri_dict):
+    def __init__(self, json_file, foods_dict):
         with open(json_file, 'r') as file:
             data = json.loads(jsmin(file.read()))
         self.name = data["name"]
@@ -109,38 +109,51 @@ class MealPlan:
         self.distribution = EnergyDistribution(self.total.nutrients["protein"],
                                                self.total.nutrients["carbohydrate"],
                                                self.total.nutrients["fat"])
+        # load DRI
+        self.dri_name = data["dietary_reference_intakes"]
+        self.dri_dict = self.load_dietary_reference_intakes()
         # calculate target
         self.target = Target(
             convert_amount(data["target"]["body_mass"], self.unit),
             data["target"]["body_fat_percent"] / 100,
             data["target"]["activity_factor"],
-            data["target"]["protein_factor"],
-            data["target"]["fat_factor"],
+            data["target"]["minimum_protein_factor"],
+            data["target"]["minimum_fat_factor"],
         )
-        dri_dict['energy'] = self.target.basal_metabolic_rate
-        dri_dict['protein'] = self.target.minimum_protein
-        dri_dict['fat'] = self.target.minimum_fat
+        # add target to DRI
+        self.dri_dict['energy'] = self.target.basal_metabolic_rate
+        self.dri_dict['protein'] = self.target.minimum_protein
+        self.dri_dict['fat'] = self.target.minimum_fat
         # calculate DRI ratio
         self.dri_ratio = dict()  # key: nutrient's data_name, value: DRI ratio
         for ntr_name in [nutrient.data_name for nutrient in nutrients_list]:
-            if ntr_name in dri_dict:
-                self.dri_ratio[ntr_name] = self.total.nutrients[ntr_name] / dri_dict[ntr_name]
+            if ntr_name in self.dri_dict:
+                self.dri_ratio[ntr_name] = self.total.nutrients[ntr_name] / self.dri_dict[ntr_name]
+
+    def load_dietary_reference_intakes(self):
+        dri_file = Path(config.dri_dir, f'{self.dri_name}.json')
+        if not dri_file.exists():
+            print(f"ERROR: DRI file '{dri_file.absolute()}' does not exist")
+            return dict()
+        with open(dri_file, 'r') as file:
+            data = json.loads(jsmin(file.read()))
+            return data['dietary_reference_intakes']
 
 
 class Target:
-    def __init__(self, body_mass, body_fat_ratio, activity_factor, protein_factor, fat_factor):
+    def __init__(self, body_mass, body_fat_ratio, activity_factor, minimum_protein_factor, minimum_fat_factor):
         self.body_mass = body_mass
         self.body_fat_ratio = body_fat_ratio
         self.activity_factor = activity_factor
-        self.protein_factor = protein_factor
-        self.fat_factor = fat_factor
+        self.minimum_protein_factor = minimum_protein_factor
+        self.minimum_fat_factor = minimum_fat_factor
         # calculate derived variables
         self.lean_body_mass = (1 - self.body_fat_ratio) * self.body_mass
         # Katch–McArdle formula: Resting Daily Energy Expenditure (RDEE)
         self.resting_energy = 370 + (21.6 * (self.lean_body_mass / 1000))
         self.basal_metabolic_rate = self.resting_energy * self.activity_factor
-        self.minimum_protein = self.lean_body_mass * self.protein_factor / 1000  # kg to g
-        self.minimum_fat = self.lean_body_mass * self.fat_factor / 1000  # kg to g
+        self.minimum_protein = self.lean_body_mass * self.minimum_protein_factor / 1000  # kg to g
+        self.minimum_fat = self.lean_body_mass * self.minimum_fat_factor / 1000  # kg to g
 
 
 class EnergyDistribution:
