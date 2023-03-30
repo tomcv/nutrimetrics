@@ -1,3 +1,10 @@
+// Originally downloaded from FoodData Central:
+// https://fdc.nal.usda.gov/fdc-app.html#/food-details/2259794/nutrients
+// FoodData Central does not list the molybdenum content of foods:
+// https://ods.od.nih.gov/factsheets/Molybdenum-HealthProfessional/
+// Adjust molybdenum amount according to source above:
+// Yogurt, plain, low-fat, 1 cup = 26 mcg
+// Assuming 1 cup of yogurt is 245 g, 100g = 10.61 mcg of molybdenum
 {
   "name": "Greek Yogurt Whole Milk",
   "description": "Yogurt, Greek, plain, whole milk",
@@ -27,7 +34,7 @@
     "iron": 0.0,
     "magnesium": 0.0107,
     "manganese": 5.738e-06,
-    "molybdenum": 0,
+    "molybdenum": 10.61e-6, // adjusted, see top comment
     "phosphorus": 0.1259,
     "potassium": 0.1469,
     "selenium": 0,

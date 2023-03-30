@@ -1,3 +1,10 @@
+// Originally downloaded from FoodData Central:
+// https://fdc.nal.usda.gov/fdc-app.html#/food-details/173414/nutrients
+// FoodData Central does not list the molybdenum content of foods:
+// https://ods.od.nih.gov/factsheets/Molybdenum-HealthProfessional/
+// Adjust molybdenum amount according to source above:
+// Cheese, cheddar, sharp, 1 ounce = 6 mcg
+// 100 g = 21.16 mcg of molybdenum
 {
   "name": "Cheddar Cheese",
   "description": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
@@ -27,7 +34,7 @@
     "iron": 0.00014000000000000001,
     "magnesium": 0.027,
     "manganese": 2.7e-05,
-    "molybdenum": 0,
+    "molybdenum": 21.16e-6, // adjusted, see top comment
     "phosphorus": 0.455,
     "potassium": 0.076,
     "selenium": 2.8499999999999998e-05,
