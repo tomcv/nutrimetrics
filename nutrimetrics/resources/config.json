@@ -96,8 +96,14 @@
     "total_bg_color": "#F2F2F2",
     "grand_total_bg_color": "#D9D9D9",
     "energy_bg_color": "#F6FBC7",
-    "dri_positive_bg_color": "#EBF1DE",
-    "dri_negative_bg_color": "#F2DCDB",
+    "dri_colors": {
+      "excess_1": "#EBF1DE",
+      "excess_2": "#D8E4BC",
+      "excess_3": "#C4D79B",
+      "deficit_1": "#F2DCDB",
+      "deficit_2": "#E6B8B7",
+      "deficit_3": "#DA9694"
+    },
     "columns_separators": [2, 20, 31, 46, 55, 65],
     "target": {
       "font_color": "#000000",

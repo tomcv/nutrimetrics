@@ -337,8 +337,18 @@ class WorkbookGenerator:
             if nutrient.data_name in meal_plan.dri_dict:
                 font_color, bg_color = self.get_colors(nutrient.data_name)
                 percent = 100 * meal_plan.dri_ratio[nutrient.data_name]
-                bg_color = (self.settings['dri_negative_bg_color'] if percent < 100
-                            else self.settings['dri_positive_bg_color'])
+                if percent >= 300:
+                    bg_color = self.settings['dri_colors']['excess_3']
+                elif percent >= 200:
+                    bg_color = self.settings['dri_colors']['excess_2']
+                elif percent >= 100:
+                    bg_color = self.settings['dri_colors']['excess_1']
+                elif percent >= 80:
+                    bg_color = self.settings['dri_colors']['deficit_1']
+                elif percent >= 60:
+                    bg_color = self.settings['dri_colors']['deficit_2']
+                else:
+                    bg_color = self.settings['dri_colors']['deficit_3']
                 fmt = self.get_format(
                     font_color=font_color,
                     bg_color=bg_color,
