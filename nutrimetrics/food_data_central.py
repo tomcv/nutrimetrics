@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: MIT
 """Defines the FoodData Central interface to import data."""
 
-from jsmin import jsmin
 import json
 import requests
 import nutrimetrics.config as config
@@ -22,9 +21,7 @@ class FoodDataCentral:
         self.replace_existing = replace_existing
         self.session = None
 
-    def import_food_list(self, json_file):
-        with open(json_file, 'r') as file:
-            data = json.loads(jsmin(file.read()))
+    def import_food_list(self, data):
         self.session = requests.Session()
         for food in data['foods']:
             food_name, fdc_id = food['name'], food['fdc_id']

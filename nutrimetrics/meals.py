@@ -4,7 +4,6 @@
 """Defines food, meal, and meal plan."""
 
 from nutrimetrics.nutrients import nutrients_list
-from jsmin import jsmin
 import json
 import os
 from pathlib import Path
@@ -34,13 +33,14 @@ class Food:
 
     @staticmethod
     def from_json(json_file):
-        data = json.loads(jsmin(json_file.read()))
+        data = config.read_json(json_file)
         food = Food()
-        food.name = data['name']
-        food.description = data['description']
-        food.amount = data['amount']
-        for ntr, amt in data['nutrients'].items():
-            food.nutrients[ntr] = amt
+        if data:
+            food.name = data['name']
+            food.description = data['description']
+            food.amount = data['amount']
+            for ntr, amt in data['nutrients'].items():
+                food.nutrients[ntr] = amt
         return food
 
     def multiply(self, m):
@@ -65,9 +65,8 @@ def load_foods():
     foods = dict()
     for file in [Path(f) for f in os.listdir(config.foods_dir)]:
         if file.suffix == '.json':
-            with open(Path(config.foods_dir, file), 'r') as json_file:
-                food = Food.from_json(json_file)
-                foods[food.name] = food
+            food = Food.from_json(Path(config.foods_dir, file))
+            foods[food.name] = food
     return OrderedDict(sorted(foods.items()))
 
 
@@ -93,9 +92,7 @@ class Meal:
 
 class MealPlan:
     """Defines meal plan that consists of meals."""
-    def __init__(self, json_file, foods_dict):
-        with open(json_file, 'r') as file:
-            data = json.loads(jsmin(file.read()))
+    def __init__(self, data, foods_dict):
         self.name = data["name"]
         self.unit = data["unit"]
         self.meals = []
@@ -135,9 +132,8 @@ class MealPlan:
         if not dri_file.exists():
             print(f"ERROR: DRI file '{dri_file.absolute()}' does not exist")
             return dict()
-        with open(dri_file, 'r') as file:
-            data = json.loads(jsmin(file.read()))
-            return data['dietary_reference_intakes']
+        data = config.read_json(dri_file)
+        return data['dietary_reference_intakes'] if data else dict()
 
 
 class Target:

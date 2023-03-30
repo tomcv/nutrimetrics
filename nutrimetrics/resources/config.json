@@ -1,4 +1,6 @@
 {
+  // FoodData Central API parameters. Get API key here:
+  // https://fdc.nal.usda.gov/api-guide.html
   "food_data_central": {
     "api_url": "https://api.nal.usda.gov/fdc/v1",
     "api_key": "ENTER_KEY_HERE",
@@ -74,6 +76,7 @@
       "theobromine": [1058]
     }
   },
+  // Workbook parameters used by the 'analyze' command
   "workbook_settings": {
     "font_name": "Helvetica",
     "font_size": 11,

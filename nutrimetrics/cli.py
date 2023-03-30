@@ -18,6 +18,8 @@ from xlsxwriter import __version__ as xlsxwriter_version
 def initialize():
     """Command that initializes user's configuration."""
     cfg = config.read_config()
+    if not cfg:
+        exit()
     info = f'NutriMetrics version {nutrimetrics_version} initialized '
     info += f'(jsmin: {jsmin_version}, requests: {requests_version}, xlsxwriter: {xlsxwriter_version})\n'
     info += config.get_config_file_tree()
@@ -40,9 +42,14 @@ def analyze_meal_plan():
     if not json_file.exists():
         print(f"Data file '{json_file}' does not exist")
         exit()
+    json_data = config.read_json(json_file)
+    if not json_data:
+        exit()
     cfg = config.read_config()
+    if not cfg:
+        exit()
     foods = load_foods()
-    meal_plan = MealPlan(json_file, foods)
+    meal_plan = MealPlan(json_data, foods)
     generator = WorkbookGenerator(cfg['workbook_settings'])
     generator.generate(Path(json_file.name.replace('.json', '.xlsx')), meal_plan, foods)
 
@@ -67,7 +74,12 @@ def import_food_data_central():
     if not json_file.exists():
         print(f"Data file '{json_file}' does not exist")
         exit()
+    json_data = config.read_json(json_file)
+    if not json_data:
+        exit()
     cfg = config.read_config()
+    if not cfg:
+        exit()
     fdc = FoodDataCentral(
         cfg['food_data_central']['api_url'],
         cfg['food_data_central']['api_key'],
@@ -75,4 +87,4 @@ def import_food_data_central():
         cfg['food_data_central']['nutrients_ids'],
         args.replace
     )
-    fdc.import_food_list(json_file)
+    fdc.import_food_list(json_data)

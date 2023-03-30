@@ -5,7 +5,9 @@
 
 from pathlib import Path
 import os
+from jsmin import jsmin
 import json
+from json.decoder import JSONDecodeError
 import importlib.resources as rsc
 import shutil
 
@@ -36,12 +38,25 @@ def initialize():
         shutil.copytree(rsc.files('nutrimetrics.resources').joinpath('samples'), samples_dir)
 
 
+def read_json(json_file):
+    """Read JSON file that may have comments"""
+    with open(json_file, 'r') as file:
+        try:
+            data = json.loads(jsmin(file.read()))
+        except JSONDecodeError as e:
+            print(f"ERROR: JSON file '{json_file.absolute()}' badly formatted")
+            print(f"{e.msg}:")
+            begin = max(0, e.pos - 50)
+            end = min(len(e.doc), e.pos + 50)
+            print(f"...\n{e.doc[begin:end]}\n...")
+            data = None
+    return data
+
+
 def read_config():
     """Read user's configuration and return configuration dictionary."""
     initialize()
-    with open(config_file, 'r') as file:
-        config = json.load(file)
-    return config
+    return read_json(config_file)
 
 
 def get_config_file_tree():
