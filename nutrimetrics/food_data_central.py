@@ -14,11 +14,12 @@ from nutrimetrics.units import convert_amount
 
 class FoodDataCentral:
     """Defines the FoodData Central interface to import data."""
-    def __init__(self, api_url, api_key, verbose_import, nutrients_ids):
+    def __init__(self, api_url, api_key, verbose_import, nutrients_ids, replace_existing):
         self.api_url = api_url
         self.api_key = api_key
         self.verbose_import = verbose_import
         self.nutrients_ids = nutrients_ids
+        self.replace_existing = replace_existing
         self.session = None
 
     def import_food_list(self, json_file):
@@ -26,9 +27,14 @@ class FoodDataCentral:
             data = json.loads(jsmin(file.read()))
         self.session = requests.Session()
         for food in data['foods']:
-            fdc_data = self.download(food['fdc_id'], food['name'])
+            food_name, fdc_id = food['name'], food['fdc_id']
+            food_file = Path(config.foods_dir, food_name.lower().replace(' ', '_') + f'_{fdc_id}.json')
+            if food_file.exists() and not self.replace_existing:
+                print(f"> Do not import {food_name}: {food_file.absolute()} already exists")
+                continue
+            fdc_data = self.download(fdc_id, food_name)
             if fdc_data:
-                self.write_food_file(food['fdc_id'], food['name'], fdc_data)
+                self.write_food_file(fdc_id, food_name, food_file, fdc_data)
 
     def download(self, fdc_id, food_name):
         query = f'{self.api_url}/food/{fdc_id}?api_key={self.api_key}'
@@ -46,8 +52,7 @@ class FoodDataCentral:
                 return nutrient_name
         return None
 
-    def write_food_file(self, fdc_id, food_name, fdc_data):
-        food_file = Path(config.foods_dir, food_name.lower().replace(' ', '_') + f'_{fdc_id}.json')
+    def write_food_file(self, fdc_id, food_name, food_file, fdc_data):
         # FoodData Central nutrients are always provided for 100 grams
         food = Food(food_name, fdc_data['description'], amount=100)
         for food_nutrient in fdc_data["foodNutrients"]:

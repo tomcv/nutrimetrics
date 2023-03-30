@@ -58,6 +58,10 @@ def import_food_data_central():
         type=str,
         help='Path to food list JSON file to be processed'
     )
+    parser.add_argument(
+        '-r', '--replace',
+        action="store_true",
+        help='Replace food file if it already exists')
     args = parser.parse_args()
     json_file = Path(vars(args)['food_list.json'])
     if not json_file.exists():
@@ -68,6 +72,7 @@ def import_food_data_central():
         cfg['food_data_central']['api_url'],
         cfg['food_data_central']['api_key'],
         cfg['food_data_central']['verbose_import'],
-        cfg['food_data_central']['nutrients_ids']
+        cfg['food_data_central']['nutrients_ids'],
+        args.replace
     )
     fdc.import_food_list(json_file)
