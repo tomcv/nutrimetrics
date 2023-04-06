@@ -1,0 +1,67 @@
+// Meal plan estimated from the article "How Michael B. Jordan Got Fit for 'Creed'"
+// https://www.mensjournal.com/health-fitness/how-michael-b-jordan-got-fit-for-creed-20151120
+// The total amount of calories seems low given Jordan heavy workouts
+// Adjusted rice and sweet potatoes amounts to match the indicated carbs amount
+{
+  "name": "Michael B. Jordan",
+  "unit": "g",
+  "target": {
+    "body_mass": 79378.7,  // 175 pounds (5'11" height)
+    "body_fat_percent": 8, // likely very low
+    "activity_factor": 1.2,  // set to 1.2 to match ~2500 kcal, should realistically be 1.5+
+    "minimum_protein_factor": 2.0,  // likely high
+    "minimum_fat_factor": 0.7  // minimum fat intake 0.7 or larger
+  },
+  "dietary_reference_intakes": "rda-male", // (ear-male, ear-female, rda-male, rda-female)
+  "meals": [
+    {
+      "name": "Meal 1",
+      "foods": [
+        {"food": "Egg White", "amount": 231}, // 33 * 7 (6 whites + 1 whole egg)
+        {"food": "Egg Yolk", "amount": 17}, // 17 * 1
+        {"food": "Rice White", "amount": 56}, // target 45g carbs
+        {"food": "Salt", "amount": 0.4}
+      ]
+    },
+    {
+      "name": "Meal 2",
+      "foods": [
+        {"food": "Protein Powder Whey", "amount": 32}, // typical amount for protein shake
+        {"food": "Oat Steel Cut", "amount": 50} // target 35g carbs
+      ]
+    },
+    {
+      "name": "Meal 3",
+      "foods": [
+        {"food": "Chicken Breast", "amount": 227}, // 8 oz
+        {"food": "Rice White", "amount": 81}, // target 65g carbs
+        {"food": "Broccoli", "amount": 90}, // 1 cup
+        {"food": "Salt", "amount": 0.4}
+      ]
+    },
+    {
+      "name": "Meal 4",
+      "foods": [
+        {"food": "Chicken Breast", "amount": 227}, // 8 oz
+        {"food": "Sweet Potato", "amount": 174}, // target 35g carbs
+        {"food": "Salt", "amount": 0.4}
+      ]
+    },
+    {
+      "name": "Meal 5",
+      "foods": [
+        {"food": "Protein Powder Whey", "amount": 32}, // typical amount for protein shake
+        {"food": "Oat Steel Cut", "amount": 50} // target 35g carbs
+      ]
+    },
+    {
+      "name": "Meal 6",
+      "foods": [
+        {"food": "Chicken Breast", "amount": 227}, // 8 oz
+        {"food": "Broccoli", "amount": 90}, // 1 cup
+        {"food": "Olive Oil", "amount": 13}, // 1 TBSP
+        {"food": "Salt", "amount": 0.4}
+      ]
+    }
+  ]
+}

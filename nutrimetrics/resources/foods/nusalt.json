@@ -1,0 +1,10 @@
+// NuSalt salt substitute (Potassium Chloride)
+// https://www.nusalt.com/
+{
+  "name": "NuSalt",
+  "description": "NuSalt salt substitute",
+  "amount": 100,
+  "nutrients": {
+    "potassium": 53
+  }
+}

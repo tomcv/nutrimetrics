@@ -14,6 +14,8 @@
     {"fdc_id": 169593,  "name": "Cocoa Powder"},
     {"fdc_id": 170554,  "name": "Chia Seed"},
     {"fdc_id": 170148,  "name": "Hemp Seed"},
+    {"fdc_id": 2257045, "name": "Almond Milk"},
+    {"fdc_id": 170569,  "name": "Brazil Nut"},
     // Legumes
     {"fdc_id": 173734,  "name": "Black Bean"},
     {"fdc_id": 169961,  "name": "Green Bean"},
@@ -57,6 +59,9 @@
     {"fdc_id": 168458,  "name": "Laver Seaweed"},
     {"fdc_id": 170465,  "name": "Turnip"},
     {"fdc_id": 169246,  "name": "Leek"},
+    {"fdc_id": 169276,  "name": "Radish"},
+    {"fdc_id": 169997,  "name": "Cilantro"},
+    {"fdc_id": 168576,  "name": "Jalapeno"},
     // Fruits
     {"fdc_id": 171689,  "name": "Apple"},
     {"fdc_id": 171697,  "name": "Apricot"},
@@ -79,6 +84,7 @@
     {"fdc_id": 174673,  "name": "Grapefruit Red"},
     {"fdc_id": 168153,  "name": "Kiwifruit"},
     {"fdc_id": 167746,  "name": "Lemon"},
+    {"fdc_id": 167747,  "name": "Lemon Juice"},
     {"fdc_id": 168155,  "name": "Lime"},
     {"fdc_id": 169910,  "name": "Mango"},
     {"fdc_id": 169918,  "name": "Orange Florida"},
@@ -86,10 +92,12 @@
     {"fdc_id": 169916,  "name": "Orange Valencia"},
     {"fdc_id": 169928,  "name": "Peach Yellow"},
     {"fdc_id": 169118,  "name": "Pear"},
+    {"fdc_id": 167787,  "name": "Pomegranate Juice"},
     // Dairy
     {"fdc_id": 173430,  "name": "Butter"},
     {"fdc_id": 170859,  "name": "Heavy Cream"},
     {"fdc_id": 173414,  "name": "Cheddar Cheese"},
+    {"fdc_id": 171247,  "name": "Parmesan Cheese"},
     {"fdc_id": 172185,  "name": "Egg Omelet"},
     {"fdc_id": 171287,  "name": "Egg Whole"},
     {"fdc_id": 172183,  "name": "Egg White"},
@@ -97,6 +105,8 @@
     {"fdc_id": 171265,  "name": "Whole Milk"},
     {"fdc_id": 171284,  "name": "Yogurt Whole Milk"},
     {"fdc_id": 2259794, "name": "Greek Yogurt Whole Milk"},
+    {"fdc_id": 746766,  "name": "Ricotta Cheese"},
+    {"fdc_id": 171242,  "name": "Gruyere Cheese"},
     // Fish
     {"fdc_id": 173686,  "name": "Salmon Atlantic"},
     {"fdc_id": 173691,  "name": "Salmon Sockeye"},
@@ -110,20 +120,27 @@
     {"fdc_id": 174030,  "name": "Beef Ground 90-10"},
     {"fdc_id": 174036,  "name": "Beef Ground 80-20"},
     {"fdc_id": 171077,  "name": "Chicken Breast"},
-    {"fdc_id": 167914,  "name": "Pork Bacon"},
+    {"fdc_id": 168322,  "name": "Pork Bacon Pan-Fried"},
     // Grains
     {"fdc_id": 2346397, "name": "Oat Steel Cut"},
     {"fdc_id": 2346396, "name": "Oat Rolled"},
     {"fdc_id": 169726,  "name": "Rice Wild"},
     {"fdc_id": 169756,  "name": "Rice White"},
     {"fdc_id": 169703,  "name": "Rice Brown"},
-    {"fdc_id": 168927, "name": "Pasta"},
-    {"fdc_id": 168874, "name": "Quinoa"},
+    {"fdc_id": 168927,  "name": "Pasta"},
+    {"fdc_id": 168874,  "name": "Quinoa"},
     // Others
     {"fdc_id": 171413,  "name": "Olive Oil"},
     {"fdc_id": 173469,  "name": "Apple Cider Vinegar"},
+    {"fdc_id": 172241,  "name": "Balsamic Vinegar"},
     {"fdc_id": 173468,  "name": "Salt"},
     {"fdc_id": 169640,  "name": "Honey"},
-    {"fdc_id": 171890,  "name": "Brewed Coffee"}
+    {"fdc_id": 171890,  "name": "Brewed Coffee"},
+    {"fdc_id": 173180,  "name": "Protein Powder Whey"},
+    {"fdc_id": 2477360, "name": "Protein Powder Pea"},
+    {"fdc_id": 1064099, "name": "Chlorella Powder"},
+    {"fdc_id": 171320,  "name": "Cinnamon"},
+    {"fdc_id": 170923,  "name": "Cumin Seed"},
+    {"fdc_id": 170273,  "name": "Dark Chocolate"}
   ]
 }

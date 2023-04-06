@@ -1,0 +1,12 @@
+// chloride: 0.9375
+{
+  "name": "Electrolyte Powder Berg",
+  "description": "Dr. Berg Original Keto Electrolytes Powder",
+  "amount": 100,
+  "nutrients": {
+    "calcium": 1.1719,
+    "magnesium": 1.875,
+    "potassium": 15.625,
+    "sodium": 0.625
+  }
+}

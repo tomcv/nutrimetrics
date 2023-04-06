@@ -1,0 +1,71 @@
+// Meal plan estimated from Bryan Johnson's blueprint:
+// https://blueprint.bryanjohnson.co/
+{
+  "name": "Bryan Johnson",
+  "unit": "g",
+  "target": {
+    "body_mass": 72892.3, // 160.7 lbs
+    "body_fat_percent": 7.1,
+    "activity_factor": 1.3, // in [1.2, 1.6] range based on activity
+    "minimum_protein_factor": 1.5, // minimum protein intake in [1.5, 2.3] range
+    "minimum_fat_factor": 0.8 // minimum fat intake 0.7 or larger
+  },
+  "dietary_reference_intakes": "rda-male", // (ear-male, ear-female, rda-male, rda-female)
+  "meals": [
+    {
+      "name": "Green Giant [5:00]",
+      "foods": [
+        {"food": "Chlorella Powder", "amount": 18}, // 2 TBSP
+        {"food": "Cinnamon", "amount": 7}, // 1 tsp
+        {"food": "Olive Oil", "amount": 13} // 1 TBSP
+      ]
+    },
+    {
+      "name": "Super Veggie [8:00]",
+      "foods": [
+        {"food": "Lentil", "amount": 20}, // set amount to match 70 kcal cooked
+        {"food": "Broccoli", "amount": 250},
+        {"food": "Cauliflower", "amount": 150},
+        {"food": "Mushroom Shiitake", "amount": 50},
+        {"food": "Garlic", "amount": 2}, // 1 clove
+        {"food": "Ginger Root", "amount": 3}, 
+        {"food": "Lime", "amount": 60}, // 1 lime
+        {"food": "Cumin Seed", "amount": 6}, // 1 TBSP
+        {"food": "Apple Cider Vinegar", "amount": 13},
+        {"food": "Hemp Seed", "amount": 10},
+        {"food": "Olive Oil", "amount": 13},
+        {"food": "Dark Chocolate", "amount": 23} // set amount to match 138 kcal
+      ]
+    },
+    {
+      "name": "Nutty Pudding [12:00]",
+      "foods": [
+        {"food": "Almond Milk", "amount": 75},
+        {"food": "Macadamia Nut", "amount": 24}, // 3 TBSP
+        {"food": "Walnut", "amount": 6}, // 2 tsp
+        {"food": "Flaxseed", "amount": 3}, // 1 tsp
+        {"food": "Brazil Nut", "amount": 2.5}, // half
+        {"food": "Cocoa Powder", "amount": 3}, // 1 TBSP
+        {"food": "Cinnamon", "amount": 3.5}, // 0.5 tsp
+        {"food": "Blueberry", "amount": 190}, // 1 cup
+        {"food": "Cherry", "amount": 12}, // 3 cherries
+        {"food": "Pomegranate Juice", "amount": 57}, // 2 oz
+        {"food": "Protein Powder Pea", "amount": 60}
+      ]
+    },
+    {
+      "name": "Third Meal",
+      "foods": [
+        {"food": "Sweet Potato", "amount": 300},
+        {"food": "Chickpea", "amount": 11}, // set amount to match 42 kcal cooked
+        {"food": "Tomato Grape", "amount": 120}, // 10g per tomato x 12
+        {"food": "Avocado", "amount": 70}, // half avocado
+        {"food": "Radish", "amount": 40}, // 10g per radish x 4
+        {"food": "Cilantro", "amount": 4}, // 1/4 cup
+        {"food": "Jalapeno", "amount": 25}, // 1 large jalapeno
+        {"food": "Lime", "amount": 134}, // 2 whole, 67g x 2
+        {"food": "Lemon", "amount": 58} // 1 whole
+      ]
+    }
+  ]
+}

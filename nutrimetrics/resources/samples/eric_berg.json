@@ -1,0 +1,59 @@
+// Meal plan estimated from the video "Dr. Berg’s Meals and Intermittent Fasting Pattern":
+// https://www.youtube.com/watch?v=EhZK_MUPxrc
+{
+  "name": "Eric Berg",
+  "unit": "g",
+  "target": {
+    "body_mass": 81647,  // 180 pounds
+    "body_fat_percent": 15, // unknown
+    "activity_factor": 1.2,  // likely low, in [1.2, 1.6] range based on activity
+    "minimum_protein_factor": 1.5,  // likely low, minimum protein intake in [1.5, 2.3] range
+    "minimum_fat_factor": 0.8  // minimum fat intake 0.7 or larger
+  },
+  "dietary_reference_intakes": "rda-male", // (ear-male, ear-female, rda-male, rda-female)
+  "meals": [
+    {
+      "name": "Coffee [5:00]",
+      "foods": [
+        {"food": "Brewed Coffee", "amount": 340},
+        {"food": "Heavy Cream", "amount": 20}
+      ]
+    },
+    {
+      "name": "Lemon [6:00]",
+      "foods": [
+        {"food": "Lemon Juice", "amount": 43}  // 1.5 ounce
+      ]
+    },
+    {
+      "name": "Meal 1 [14:00]",
+      "foods": [
+        {"food": "Egg Omelet", "amount": 200}, // 4 eggs
+        {"food": "Pork Bacon Pan-Fried", "amount": 40}, // 8-12g per slice when fully cooked, 4 slices
+        {"food": "Cheddar Cheese", "amount": 85}, // 3 oz
+        {"food": "Green Olive", "amount": 45}, // quater of cup of olives
+        {"food": "Tomato Red", "amount": 60} // 1 tomato
+      ]
+    },
+    {
+      "name": "Meal 2 [17:30]",
+      "foods": [
+        // amounts are estimated based on the description in the video
+        {"food": "Lettuce Romaine", "amount": 100},
+        {"food": "Cabbage", "amount": 100},
+        {"food": "Kale", "amount": 100},
+        {"food": "Bell Pepper Orange", "amount": 100},
+        {"food": "Tomato Red", "amount": 60}, // 1 tomato
+        {"food": "Parmesan Cheese", "amount": 45},
+        {"food": "Olive Oil", "amount": 26}, // 2 TBSP
+        {"food": "Balsamic Vinegar", "amount": 13}, // 1 TBSP
+        {"food": "Salmon Atlantic", "amount": 65}, // rotate salmon, sardine, burger (~200g in average)
+        {"food": "Sardine", "amount": 65},
+        {"food": "Beef Ground 80-20", "amount": 65},
+        {"food": "Sauerkraut", "amount": 80},
+        {"food": "Pecan Nut", "amount": 25},
+        {"food": "Pistachio", "amount": 25}
+      ]
+    }
+  ]
+}
